@@ -1,0 +1,28 @@
+
+service:
+  aws:
+    access:
+      key: ${AWS_ACCESS_KEY:AKIA2T4YCQOZZBIJBCTK}
+      secret: ${AWS_ACCESS_SECRET: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}
+    s3:
+      bucket:
+        region: us-east-2
+        photo: spring-aws-upload
+
+spring:
+  application:
+    name: aws-s3-upload
+  datasource:
+      url: jdbc:mysql://localhost:3308/user-aws-profile
+      username: user
+      password: pwd
+      initialization-mode: always
+  # Strongly recommend to set this property to "none" in a production environment!
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+

@@ -1,0 +1,28 @@
+.main_card {
+    padding: 1rem;
+    margin: 10px;
+    height: 800px;
+    overflow-y: auto;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+
+  /* width */
+.main_card::-webkit-scrollbar {
+    width: 3px;
+}
+  
+  /* Track */
+.main_card::-webkit-scrollbar-track {
+    background: inherit;
+}
+  
+  /* Handle */
+.main_card::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+  
+  /* Handle on hover */
+.main_card::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

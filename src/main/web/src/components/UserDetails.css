@@ -1,0 +1,28 @@
+.Card {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    margin: 5px;
+    border-radius: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .Card__name {
+    color: #223322;
+    font-size: small;
+  }
+  .Card__pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .Card__details {
+    padding: 0 0 0 1rem;
+  }
+  
+  /* not small devices  */
+  @media (min-width: 576px) {
+    .Card__name {
+      font-size: large;
+    }
+  }
