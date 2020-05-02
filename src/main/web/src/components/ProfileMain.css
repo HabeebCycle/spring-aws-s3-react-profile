@@ -3,6 +3,8 @@
     margin: 10px;
     height: 800px;
     overflow-y: auto;
+    background-color: #ececec;
+    border-radius: 5px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   }
 
@@ -25,4 +27,33 @@
   /* Handle on hover */
 .main_card::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.main_card .loading{
+  margin: auto;
+  text-align: center;
+  color: #00491e;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.main_card .no_user{
+  margin: auto;
+  text-align: center;
+  color: #0f0062;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.main_card .error{
+  margin: auto;
+  text-align: center;
+  color: #ff0012;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.new_profile {
+  float: right;
+  margin: auto;
 }

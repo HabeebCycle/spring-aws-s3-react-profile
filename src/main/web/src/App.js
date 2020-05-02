@@ -1,10 +1,9 @@
-import React from 'react';
-import ProfileMain from './components/ProfileMain';
+import React from "react";
+import ProfileMain from "./components/ProfileMain";
 
-function App() {
-  return (
-    <ProfileMain/>
-  );
-}
+const App = () => {
+	//const { userProfiles } = store.getState();
+	return <ProfileMain />;
+};
 
 export default App;

@@ -1,42 +1,60 @@
-import React, {useEffect, useState} from 'react';
-import { fetchAllUsers } from '../utils/APIUtils';
-import { UserDetails } from './UserDetails';
-import { Container, Card, Row, Col } from 'react-bootstrap';
-import './ProfileMain.css'
+import React, { useEffect, useState } from "react";
+import { fetchAllUsers } from "../utils/APIUtils";
+import { UserDetails } from "./UserDetails";
+import { Container, Row, Col } from "react-bootstrap";
+import "./ProfileMain.css";
+import AddProfile from "./AddProfile";
+import store from "../store";
+import { setUserProfiles, setFetchError } from "../actions";
 
 export default function ProfileMain() {
-    const [userProfiles, setUserProfiles] = useState([]);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        setLoading(true);
-        fetchAllUsers().then(res => {
-            setUserProfiles(res.data);
-            setLoading(false);
-        }).catch(err => {
-            setError(err.message);
-            setLoading(false);
-        })
-    }, []);
+	const { userProfiles, errors } = store.getState();
 
-    return(
-        <Container className="main_card">
-            <Row xs={1} md={2}>
-            {
-                loading ? (<p>Loading...</p>) :
-                error ? (<div>Error Occured: {error}</div>) :
-                (userProfiles.length) > 0 ? 
-                    userProfiles.map((user, index) => (
-                        <Col>
-                            <UserDetails key={index} user={user} />
-                        </Col>
-                    )) : 
-                (<div>No User Profile Found</div>)
-            }
-            </Row>
-        </Container>
-        
-    );
+	useEffect(() => {
+		setLoading(true);
+		fetchAllUsers()
+			.then((res) => {
+				store.dispatch(setUserProfiles(res.data));
+				setLoading(false);
+			})
+			.catch((err) => {
+				store.dispatch(setFetchError(err.message));
+				setLoading(false);
+			});
+	}, []);
 
+	return (
+		<div>
+			<Container fluid>
+				<Row xs={1} md={2}>
+					<Col xs={12} md={8}>
+						<div className="main_card">
+							<Row xs={1} md={2}>
+								{loading ? (
+									<div className="loading">Loading User Profiles...</div>
+								) : errors.fetchError ? (
+									<div className="error">{errors.fetchError}</div>
+								) : userProfiles.userProfiles.length > 0 ? (
+									userProfiles.userProfiles.map((user, index) => (
+										<Col key={index}>
+											<UserDetails key={index} user={user} />
+										</Col>
+									))
+								) : (
+									<div className="no_user">No User Profile Found</div>
+								)}
+							</Row>
+						</div>
+					</Col>
+					<Col xs={12} md={4}>
+						<div className="main_card">
+							<AddProfile {...userProfiles.userProfile} />
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</div>
+	);
 }
