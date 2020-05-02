@@ -2,8 +2,8 @@
 service:
   aws:
     access:
-      key: ${AWS_ACCESS_KEY:AKIA2T4YCQOZZBIJBCTK}
-      secret: ${AWS_ACCESS_SECRET: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}
+      key: ${AWS_ACCESS_KEY}
+      secret: ${AWS_ACCESS_SECRET}
     s3:
       bucket:
         region: us-east-2
